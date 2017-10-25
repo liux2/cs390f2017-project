@@ -1,0 +1,2 @@
+https://earthquake.usgs.gov/data/comcat/latest-eqs.php#list
+https://earthquake.usgs.gov/data/pde.php
