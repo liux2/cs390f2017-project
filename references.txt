@@ -1,2 +1,1 @@
-https://earthquake.usgs.gov/data/comcat/latest-eqs.php#list
-https://earthquake.usgs.gov/data/pde.php
+https://www.kaggle.com/sorzhe/us-mass-shooting/data
