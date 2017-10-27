@@ -1,1 +1,1 @@
-In this lab, we are going to analyze data. 
+In this lab, we are going to analyze US mess shooting data.
