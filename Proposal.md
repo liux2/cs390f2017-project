@@ -1,1 +1,1 @@
-In this lab, we are going to analyze US mess shooting data.
+In this lab, we are going to analyze US mess shooting data. The reason we choose this question is because recently, there was a big mass shooting happened in Las Vegas. Lots of people died because of that. So, we think we could patterns in the data set of US mess shooting data, and what could be the key factors that could cause the mess shooting.
