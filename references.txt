@@ -1,2 +1,5 @@
 https://www.kaggle.com/sorzhe/us-mass-shooting/data
 Notes: shooters' racial(More white, however, the population recial in US?)
+
+http://www.cnn.com/2017/10/13/us/las-vegas-shooting-investigation/index.html
+Notes: Las Vegas police again change timeline of mass shooting
