@@ -7,3 +7,4 @@ This is a repo for Allegheny College computer science 390 final project. Group m
 ### Content:
 
 - [Proposal](Proposal.md)
+- [Progress report](ProgressReport.md)
