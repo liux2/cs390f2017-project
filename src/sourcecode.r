@@ -1,6 +1,13 @@
 install.packages("PBSmapping")
 install.packages("maptools")
+install.packages("lubridate")
+install.packages("PBSmapping")
+install.packages("maptools")
+install.packages("data.table")
+
 library(tidyverse)
+library(lubridate)
+library(data.table)
 library(psych)
 library(PBSmapping)
 library(maptools)
@@ -13,5 +20,5 @@ usShape <- importShapefile( file.choose(),readDBF=TRUE)
 MassShoot <- file.choose()
 MassShooting <- read.csv(MassShoot)
 
-#data pre-handing
+#data pre-handling
 dat <- MessShooting %>% 
