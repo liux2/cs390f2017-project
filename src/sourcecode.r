@@ -12,8 +12,11 @@ pointPlot <- function(Y, X, EID)
 {
 pointData <- data.frame(EID,X,Y)
 eventData <- as.EventData(pointData,projection=NA)
-addPoints(eventData,col="green",cex=.5)
+addPoints(eventData,col="red",cex=.5)
 }
+plotPolys(usShape)
+plotPolys(usShape, xlim=c(-130,-60),ylim=c(20,50))
+pointPlot(41.49111,-120.54909, 1)
 
 #We will be using ver.2
 MassShoot <- file.choose()
