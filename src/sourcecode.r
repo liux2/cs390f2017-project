@@ -6,3 +6,4 @@ MassShoot <- file.choose()
 MassShooting <- read.csv(MassShoot)
 
 #data pre-handing
+dat <- MessShooting %>% 
