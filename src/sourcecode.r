@@ -36,6 +36,10 @@ MassShooting$Race[MassShooting$Race=="unclear" | MassShooting$Race==""] <- "Unkn
 MassShooting$Race[MassShooting$Race=="Asian American/Some other race" | MassShooting$Race=="Asian American"] <- "Asian"
 MassShooting$Race[MassShooting$Race=="Latino" | MassShooting$Race=="Native American" | MassShooting$Race=="Native American or Alaska Native" | MassShooting$Race=="Some other race" | MassShooting$Race=="Two or more races"] <- "Other"
 
+#date
+MassShooting$Date <- as.Date(MassShooting$Date,"%m/%d/%Y")
+MassShooting$year <- year(MassShooting$Date)
+
 #mapping
 states_map <- map_data("state")
 ggplot(states_map, aes(x=long,y=lat,group=group)) + geom_polygon(fill="white",colour="black") + labs(title = "USA Map")
