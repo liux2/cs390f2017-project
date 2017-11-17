@@ -16,6 +16,11 @@ addPoints(eventData,col="red",cex=.5)
 }
 plotPolys(usShape)
 plotPolys(usShape, xlim=c(-130,-60),ylim=c(20,50))
+<<<<<<< HEAD
+=======
+pointPlot(41.49111,-120.54909, 1)
+
+>>>>>>> 87cae64838a372aa0c6d3d2f73d3e9d3eaf8147a
 #We will be using ver.2
 MassShoot <- file.choose()
 MassShooting <- read.csv(MassShoot)
