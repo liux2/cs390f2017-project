@@ -26,6 +26,7 @@ MassShooting$Race[MassShooting$ID==1] <- "White"
 MassShooting$Gender[MassShooting$ID==1] <- "Male"
 MassShooting$Summary[MassShooting$ID==1] <- "Stephen Paddock, a 64-year-old gunman opened fire on a large crowd of concertgoers at the Route 91 Harvest music festival on the Las Vegas Strip, killing 59 people and injuring 527"
 
+#keep handling
 MassShooting$Gender[MassShooting$Gender=="M"] <- "Male"
 MassShooting$Gender[MassShooting$Gender=="M/F"] <- "Male/Female"
 MassShooting$Mental[MassShooting$Mental=="Unclear" | MassShooting$Mental=="unknown" | MassShooting$Mental=="Unknown"] <- "Unknown"
