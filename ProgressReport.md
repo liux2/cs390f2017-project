@@ -1,7 +1,7 @@
-### Ziyang Zhang, Xingbang Liu, Zijun Xia
-### CS 390 Final Project
-### Progress Report
-### 17 November, 2017
+#### Ziyang Zhang, Xingbang Liu, Zijun Xia
+#### CS 390 Final Project
+#### Progress Report
+#### 17 November, 2017
 
 First of all, we have cleaned the dataset. The original data is too raw and not regulated on many cell's information, so we cannot directly use them. Thus, we opened this data on LiBreOffice Calc and edit this file manually. To be specific, we rename the columns in a easier way to be called. Then, we divide the location column to specific states and cities columns which can be used for plotting. Also we added the recently happened Las Vegas mass shooting data. We noticed that there are some missing values in the latitude and longitude columns which, however, should exist since if we know the city name, we know the location. So we searched online GPS information to find out the exact latitude and longitude of the places we want to know. As for other missing values, we filled NA in them, so the implicit NAs became explicit.
 Since our further study of the data will require us to compare variables with time, so we extract the exact year information out of the date column.
