@@ -43,8 +43,8 @@ MassShooting$year <- year(MassShooting$Date)
 #mapping
 states_map <- map_data("state")
 ggplot(states_map, aes(x=long,y=lat,group=group)) + geom_polygon(fill="white",colour="black") + labs(title = "USA Map")
-MassShooting$State <- tolower(MassShooting$State)
-Shooting_map <- merge(states_map, MassShooting, by.x="region", by.y = "State")
+MassShooting$state <- tolower(MassShooting$state)
+Shooting_map <- merge(states_map, MassShooting, by.x="region", by.y = "state")
 
 a <- filter(MassShooting, state == " texas")
 sum(a$Total)
