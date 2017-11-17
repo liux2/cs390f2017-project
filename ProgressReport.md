@@ -1,6 +1,6 @@
 ### Ziyang Zhang, Xingbang Liu, Zijun Xia
-### Final Project
-### Project Report
+### CS 390 Final Project
+### Progress Report
 ### 17 November, 2017
 
 First of all, we have cleaned the dataset. The original data is too raw and not regulated on many cell's information, so we cannot directly use them. Thus, we opened this data on LiBreOffice Calc and edit this file manually. To be specific, we rename the columns in a easier way to be called. Then, we divide the location column to specific states and cities columns which can be used for plotting. Also we added the recently happened Las Vegas mass shooting data. We noticed that there are some missing values in the latitude and longitude columns which, however, should exist since if we know the city name, we know the location. So we searched online GPS information to find out the exact latitude and longitude of the places we want to know. As for other missing values, we filled NA in them, so the implicit NAs became explicit.
@@ -43,8 +43,8 @@ ggplot(data = Shooting_map, aes(x=long, y=lat, group = group, fill = Victims)) +
 Then, we get the map:
 ![map](/pic/map.png "map")
 
-* Describe anything new that you have learned so far
-
-* any unexpected challenges that you have encountered
+In this project, we have learned something by ourselves. First of all, we learned the basic implementation of regular expression. Also, we learned how to implement map by using map package. Finally we learned how to manipulate date by using lubridate package.
 
 The original dataset was not rigorous, and it would be very time consuming if we find codes, for example, regular expression, to edit the cells. Therefore, we decided to edit some data by hands. We split location column to state and city, and we also use the tittle, summary or the latitude and longitude to find the specific location if the original data were unknown. Also, we filled empty latitude and longitude by searching the city location.
+
+This is the processes we have so far. We didn't have a complete study questions so far, the questions we have so far are not very considerable. We will complete them during our next stage study. 

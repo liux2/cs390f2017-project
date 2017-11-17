@@ -1,4 +1,4 @@
-install.packages("ggmap")
+install.packages("maps")
 install.packages("stringr")
 install.packages("lubridate")
 
