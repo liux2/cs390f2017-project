@@ -46,7 +46,8 @@ ggplot(states_map, aes(x=long,y=lat,group=group)) + geom_polygon(fill="white",co
 MassShooting$State <- tolower(MassShooting$State)
 Shooting_map <- merge(states_map, MassShooting, by.x="region", by.y = "State")
 
-
+a <- filter(MassShooting, state == " texas")
+sum(a$Total)
 
 
 
