@@ -6,19 +6,17 @@ install.packages("lubridate")
 
 library(tidyverse)
 library(psych)
-library(PBSmapping)
-library(maptools)
 library(ggmap)
-library(stringr)
 library(lubridate)
-
+library(maps)
+library(stringr)
 
 #We will be using ver.2
 MassShoot <- file.choose()
 MassShooting <- read.csv(MassShoot)
 
 #data pre-handing(part learned from Shuhao, Linkedin: https://www.linkedin.com/in/%E4%B9%A6%E8%B1%AA-%E9%82%AC-57891910b/)
-MassShooting <- rename(MassShooting,ID=`S.`,Total=`Total.victims`,Mental=`Mental.Health.Issues`)
+MassShooting <- rename(MassShooting,state= `State`,ID=`S.`,Total=`Total.victims`,Mental=`Mental.Health.Issues`)
 
 #add vegas data
 MassShooting$Injured[MassShooting$ID==1] <- 527
@@ -30,25 +28,22 @@ MassShooting$Summary[MassShooting$ID==1] <- "Stephen Paddock, a 64-year-old gunm
 
 MassShooting$Gender[MassShooting$Gender=="M"] <- "Male"
 MassShooting$Gender[MassShooting$Gender=="M/F"] <- "Male/Female"
-
 MassShooting$Mental[MassShooting$Mental=="Unclear" | MassShooting$Mental=="unknown" | MassShooting$Mental=="Unknown"] <- "Unknown"
-
 MassShooting$Race[MassShooting$Race=="black" | MassShooting$Race=="Black American or African American" | MassShooting$Race=="Black American or African American/Unknown"] <- "Black"
 MassShooting$Race[MassShooting$Race=="white" | MassShooting$Race=="White American or European American" | MassShooting$Race=="White American or European American/Some other Race"] <- "White"
 MassShooting$Race[MassShooting$Race=="unclear" | MassShooting$Race==""] <- "Unknown"
 MassShooting$Race[MassShooting$Race=="Asian American/Some other race" | MassShooting$Race=="Asian American"] <- "Asian"
 MassShooting$Race[MassShooting$Race=="Latino" | MassShooting$Race=="Native American" | MassShooting$Race=="Native American or Alaska Native" | MassShooting$Race=="Some other race" | MassShooting$Race=="Two or more races"] <- "Other"
 
-#Import US map.
-usShape <- importShapefile(file.choose(),readDBF=TRUE)
-# File to load: gz_2010_us_040_00_500k.shp
-pointPlot <- function(Y, X, EID)
-{
-  pointData <- data.frame(EID,X,Y)
-  eventData <- as.EventData(pointData,projection=NA)
-  addPoints(eventData,col="red",cex=.5)
-}
-plotPolys(usShape)
-plotPolys(usShape, xlim=c(-130,-60),ylim=c(20,50))
+#mapping
+states_map <- map_data("state")
+ggplot(states_map, aes(x=long,y=lat,group=group)) + geom_polygon(fill="white",colour="black") + labs(title = "USA Map")
+MassShooting$State <- tolower(MassShooting$State)
+Shooting_map <- merge(states_map, MassShooting, by.x="region", by.y = "State")
 
-pointPlot(41.49111,-120.54909, 1)
+
+
+
+
+
+
