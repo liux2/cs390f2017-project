@@ -1,12 +1,9 @@
-install.packages("PBSmapping")
-install.packages("maptools")
 install.packages("ggmap")
 install.packages("stringr")
 install.packages("lubridate")
 
 library(tidyverse)
 library(psych)
-library(ggmap)
 library(lubridate)
 library(maps)
 library(stringr)
@@ -44,11 +41,17 @@ MassShooting$year <- year(MassShooting$Date)
 states_map <- map_data("state")
 ggplot(states_map, aes(x=long,y=lat,group=group)) + geom_polygon(fill="white",colour="black") + labs(title = "USA Map")
 MassShooting$state <- tolower(MassShooting$state)
+<<<<<<< HEAD
 Shooting_map <- merge(states_map, MassShooting, by.x="region", by.y = "state")
+=======
+Victim <- file.choose()
+Victims <- read.csv(Victim)
+Shooting_map <- merge(states_map, Victims, by.x="region", by.y = "State")
+Shooting_map <- arrange(Shooting_map,group,order)
+ggplot(data = Shooting_map, aes(x=long, y=lat, group = group, fill = Victims)) + geom_polygon(colour = "black") +  labs(title = "USA Map")
+>>>>>>> 2581f902acf81fd1a9b6e6a6da5a197b5fb5c12d
 
-a <- filter(MassShooting, state == " texas")
-sum(a$Total)
-
+data_year <- filter(MassShooting, year >= 1979 & year <= 2010)
 
 
 
