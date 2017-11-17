@@ -44,15 +44,11 @@ MassShooting$year <- year(MassShooting$Date)
 states_map <- map_data("state")
 ggplot(states_map, aes(x=long,y=lat,group=group)) + geom_polygon(fill="white",colour="black") + labs(title = "USA Map")
 MassShooting$state <- tolower(MassShooting$state)
-<<<<<<< HEAD
 Victim <- file.choose()
 Victims <- read.csv(Victim)
 Shooting_map <- merge(states_map, Victims, by.x="region", by.y = "State")
-
+Shooting_map <- arrange(Shooting_map,group,order)
 ggplot(data = Shooting_map, aes(x=long, y=lat, group = group, fill = Victims)) + geom_polygon(colour = "black") +  labs(title = "USA Map")
-=======
-Shooting_map <- merge(states_map, MassShooting, by.x="region", by.y = "state")
->>>>>>> e61eb70308f9449bd1c93c87e4afaeae747a8f67
 
 
 
