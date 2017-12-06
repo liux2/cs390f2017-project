@@ -41,18 +41,29 @@ MassShooting$year <- year(MassShooting$Date)
 states_map <- map_data("state")
 ggplot(states_map, aes(x=long,y=lat,group=group)) + geom_polygon(fill="white",colour="black") + labs(title = "USA Map")
 MassShooting$state <- tolower(MassShooting$state)
-<<<<<<< HEAD
 Shooting_map <- merge(states_map, MassShooting, by.x="region", by.y = "state")
-=======
+
 Victim <- file.choose()
 Victims <- read.csv(Victim)
 Shooting_map <- merge(states_map, Victims, by.x="region", by.y = "State")
 Shooting_map <- arrange(Shooting_map,group,order)
 ggplot(data = Shooting_map, aes(x=long, y=lat, group = group, fill = Victims)) + geom_polygon(colour = "black") +  labs(title = "USA Map")
->>>>>>> 2581f902acf81fd1a9b6e6a6da5a197b5fb5c12d
 
 data_year <- filter(MassShooting, year >= 1979 & year <= 2010)
 
-
-
+#age from summary
+temp <- mutate(MassShooting,age=str_extract_all(MassShooting$Summary,pattern="(,\\s)\\d{2}(,)"),age2=str_extract_all(MassShooting$Summary,pattern="(a\\s)\\d{2}(-year)"))
+temp$age <- str_sub(temp$age,3,4)
+temp$age2 <- str_sub(temp$age2,3,4)
+tem <- subset(temp,temp$age!="ar")
+tem2 <- subset(temp,temp$age2!="ar")
+tem <- rbind(tem,tem2)
+for(i in 1:nrow(tem))
+  if(tem$age[i]=="ar") tem$age[i] <- tem$age2[i]
+tem <- arrange(tem,age)
+tem <- tem[-c(1:4),]
+tem <- arrange(tem,ID)
+tem$age <- as.integer(tem$age)
+tem3 <- tem %>% select(ID,age) %>% mutate(agecut=cut(tem$age,breaks = 10*(1:7)))
+shoot_age <- left_join(tem3, MassShooting,by="ID")
 
