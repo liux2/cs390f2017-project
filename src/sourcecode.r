@@ -51,8 +51,8 @@ Shooting_map <- arrange(Shooting_map,group,order)
 ggplot(data = Shooting_map, aes(x=long, y=lat, group = group, fill = Victims)) + geom_polygon(colour = "black") +  labs(title = "USA Map")
 >>>>>>> 2581f902acf81fd1a9b6e6a6da5a197b5fb5c12d
 
-data_year <- filter(MassShooting, year >= 1979 & year <= 2010)
+data_year <- file.choose()
+data_year <- read.csv(data_year)
 
-
-
+data_year %>% ggplot(aes(x = year, y= Total)) + geom_point(alpha = 0.8) + geom_smooth() 
 
