@@ -49,12 +49,12 @@ Shooting_map <- merge(states_map, Victims, by.x="region", by.y = "State")
 Shooting_map <- arrange(Shooting_map,group,order)
 ggplot(data = Shooting_map, aes(x=long, y=lat, group = group, fill = Victims)) + geom_polygon(colour = "black") +  labs(title = "USA Map")
 
-<<<<<<< HEAD
+
 data_year <- file.choose()
 data_year <- read.csv(data_year)
 
-data_year %>% ggplot(aes(x = year, y= Total)) + geom_point(alpha = 0.8) + geom_smooth() 
-=======
+data_year %>% ggplot(aes(x = year, y= Total)) + geom_point(alpha = 0.8) + geom_smooth()
+
 data_year <- filter(MassShooting, year >= 1979 & year <= 2010)
 
 #age from summary
@@ -72,5 +72,3 @@ tem <- arrange(tem,ID)
 tem$age <- as.integer(tem$age)
 tem3 <- tem %>% select(ID,age) %>% mutate(agecut=cut(tem$age,breaks = 10*(1:7)))
 shoot_age <- left_join(tem3, MassShooting,by="ID")
->>>>>>> b7051f499c2ba820299a42ca2e35594b5cfeed1d
-
