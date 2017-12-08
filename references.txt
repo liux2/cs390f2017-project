@@ -13,4 +13,6 @@ https://www.cnbc.com/2014/11/20/gun-laws-vary-state-by-state-cnbc-explains.html
 Notes: gun laws over different states.
 
 
-First, we use mapping to pick the state with the most overlapping points, which has the most number of shooting cases. Then we choose this state as a sample set to compare it with the whole data set. By using t-test or linear model, we find out the p-value to judge the variance between the sample and the population.  
+First, we use mapping to pick the state with the most overlapping points, which has the most number of shooting cases.
+Then we choose this state as a sample set to compare it with the whole data set.
+By using t-test or linear model, we find out the p-value to judge the variance between the sample and the population.  
