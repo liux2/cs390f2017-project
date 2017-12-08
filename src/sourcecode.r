@@ -61,15 +61,11 @@ Deathrate<- merge(Deathrate, states, by.x = "State", by.y = "region")
 ratemap <- ggplot(Deathrate, aes(map_id = State, fill = rate_q)) + geom_map(map = states_map, colour = "black") + scale_fill_brewer(palette = "Set2") + expand_limits(x = states_map$long, y = states_map$lat)+ coord_map("polyconic") + labs(fill = "Death Rate\nPercentile", title = "MassShooting in USA")
 
 #xiazijun de 
-data_year <- file.choose()
-data_year <- read.csv(data_year)
-
-data_year %>% ggplot(aes(x = year, y= Total)) + geom_point(alpha = 0.8) + geom_smooth()
-data_year <- file.choose()
-data_year <- read.csv(data_year)
-data_year %>% ggplot(aes(x = year, y= Total)) + geom_point(alpha = 0.8) + geom_smooth()
-data_year <- filter(MassShooting, year >= 1979 & year <= 2010)
-
+#Shooting_state <- filter(MassShooting, state %in% c(" texas", " florida"))
+#Shooting_state <- select(Shooting_state, state, Total, year)
+Shooting_states <- file.choose()
+Shooting_state <- read.csv(Shooting_states)
+t.test(data = Shooting_state, victim ~ state)
 #age from summary
 temp <- mutate(MassShooting,age=str_extract_all(MassShooting$Summary,pattern="(,\\s)\\d{2}(,)"),age2=str_extract_all(MassShooting$Summary,pattern="(a\\s)\\d{2}(-year)"))
 temp$age <- str_sub(temp$age,3,4)
