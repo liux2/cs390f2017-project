@@ -2,12 +2,13 @@ install.packages("maps")
 install.packages("stringr")
 install.packages("lubridate")
 
+library(plyr)
 library(tidyverse)
 library(psych)
+library(ggmap)
 library(lubridate)
 library(maps)
 library(stringr)
-
 #We will be using ver.2
 MassShoot <- file.choose()
 MassShooting <- read.csv(MassShoot)
@@ -48,11 +49,22 @@ Victims <- read.csv(Victim)
 Shooting_map <- merge(states_map, Victims, by.x="region", by.y = "State")
 Shooting_map <- arrange(Shooting_map,group,order)
 ggplot(data = Shooting_map, aes(x=long, y=lat, group = group, fill = Victims)) + geom_polygon(colour = "black") +  labs(title = "USA Map")
+# plot a quantile map
+Death <- file.choose()
+Deathrate <- read.csv(Death)
+Deathrate <- transform(Deathrate, rate = Fatalities / Victims)
+qa <- quantile(Deathrate$rate,c(0,0.2,0.4,0.6,0.8,1.0))
+Deathrate$rate_q <- cut(Deathrate$rate, qa, labels = c("0-20%","20-40%","40-60%","60-80%","80-100%"),include.lowest = TRUE)
+states <- ddply(states_map, .(region), summarise, lat = mean(lat, na.rm = TRUE), long = mean(long, na.rm = TRUE))
+Deathrate<- merge(Deathrate, states, by.x = "State", by.y = "region")
 
-
+#xiazijun de 
 data_year <- file.choose()
 data_year <- read.csv(data_year)
 
+data_year %>% ggplot(aes(x = year, y= Total)) + geom_point(alpha = 0.8) + geom_smooth()
+data_year <- file.choose()
+data_year <- read.csv(data_year)
 data_year %>% ggplot(aes(x = year, y= Total)) + geom_point(alpha = 0.8) + geom_smooth()
 data_year <- filter(MassShooting, year >= 1979 & year <= 2010)
 
