@@ -57,7 +57,7 @@ qa <- quantile(Deathrate$rate,c(0,0.2,0.4,0.6,0.8,1.0))
 Deathrate$rate_q <- cut(Deathrate$rate, qa, labels = c("0-20%","20-40%","40-60%","60-80%","80-100%"),include.lowest = TRUE)
 states <- ddply(states_map, .(region), summarise, lat = mean(lat, na.rm = TRUE), long = mean(long, na.rm = TRUE))
 Deathrate<- merge(Deathrate, states, by.x = "State", by.y = "region")
-
+ratemap <- ggplot(Deathrate, aes(map_id = State, fill = rate_q)) + geom_map(map = states_map, colour = "black") + scale_fill_brewer(palette = "Set2") + expand_limits(x = states_map$long, y = states_map$lat)+ coord_map("polyconic") + labs(fill = "Death Rate\nPercentile", title = "MassShooting in USA")
 #xiazijun de 
 data_year <- file.choose()
 data_year <- read.csv(data_year)
