@@ -49,6 +49,7 @@ Victims <- read.csv(Victim)
 Shooting_map <- merge(states_map, Victims, by.x="region", by.y = "State")
 Shooting_map <- arrange(Shooting_map,group,order)
 ggplot(data = Shooting_map, aes(x=long, y=lat, group = group, fill = Victims)) + geom_polygon(colour = "black") +  labs(title = "USA Map")
+
 # plot a quantile map
 Death <- file.choose()
 Deathrate <- read.csv(Death)
@@ -58,6 +59,7 @@ Deathrate$rate_q <- cut(Deathrate$rate, qa, labels = c("0-20%","20-40%","40-60%"
 states <- ddply(states_map, .(region), summarise, lat = mean(lat, na.rm = TRUE), long = mean(long, na.rm = TRUE))
 Deathrate<- merge(Deathrate, states, by.x = "State", by.y = "region")
 ratemap <- ggplot(Deathrate, aes(map_id = State, fill = rate_q)) + geom_map(map = states_map, colour = "black") + scale_fill_brewer(palette = "Set2") + expand_limits(x = states_map$long, y = states_map$lat)+ coord_map("polyconic") + labs(fill = "Death Rate\nPercentile", title = "MassShooting in USA")
+
 #xiazijun de 
 data_year <- file.choose()
 data_year <- read.csv(data_year)
