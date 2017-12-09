@@ -52,7 +52,7 @@ states <- ddply(states_map, .(region), summarise, lat = mean(lat, na.rm = TRUE),
 Deathrate<- merge(Deathrate, states, by.x = "State", by.y = "region")
 ratemap <- ggplot(Deathrate, aes(map_id = State, fill = rate_q)) + geom_map(map = states_map, colour = "black") + scale_fill_brewer(palette = "Set2") + expand_limits(x = states_map$long, y = states_map$lat)+ coord_map("polyconic") + labs(fill = "Death Rate\nPercentile", title = "MassShooting in USA")
 
-#xiazijun de
+#xiazijun
 #Shooting_state <- filter(MassShooting, state %in% c(" texas", " florida"))
 #Shooting_state <- select(Shooting_state, state, Total, year)
 Shooting_states <- file.choose()
