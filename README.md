@@ -5,11 +5,13 @@ The topic of our project is about Mess Shooting cases in United States. The data
 
 For instructions, here is the [Protal](/instruction/cs390f2017-project.pdf).
 
+If you want to check the raw code of my presentation, you can check our another [repository](https://github.com/liux2/cs390f2017-presentation).
+
 Here is our content:
 
 ### Content:
 
 - [Proposal](Proposal.md)
 - [Progress Report](ProgressReport.md)
-- [Presentation]()
+- [Presentation](http://cdn.rawgit.com/liux2/cs390f2017-presentation/master/cs390_presentation.html)
 - [Final Report]()
