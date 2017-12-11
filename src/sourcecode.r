@@ -10,8 +10,8 @@ library(lubridate)
 library(maps)
 library(stringr)
 #We will be using ver.2
-MassShoot <- file.choose()
-MassShooting <- read.csv(MassShoot)
+MassShooting <- file.choose()
+MassShooting <- read.csv(MassShooting)
 
 #data pre-handing(part learned from Shuhao, Linkedin: https://www.linkedin.com/in/%E4%B9%A6%E8%B1%AA-%E9%82%AC-57891910b/)
 MassShooting <- rename(MassShooting,state= `State`,ID=`S.`,Total=`Total.victims`,Mental=`Mental.Health.Issues`)
@@ -30,27 +30,29 @@ MassShooting$Race[MassShooting$Race=="Latino" | MassShooting$Race=="Native Ameri
 MassShooting$Date <- as.Date(MassShooting$Date,"%m/%d/%Y")
 MassShooting$year <- year(MassShooting$Date)
 
-#mapping
+#mapping the total victims
 states_map <- map_data("state")
 ggplot(states_map, aes(x=long,y=lat,group=group)) + geom_polygon(fill="white",colour="black") + labs(title = "USA Map")
-MassShooting$state <- tolower(MassShooting$state)
-Shooting_map <- merge(states_map, MassShooting, by.x="region", by.y = "state")
-
-Victim <- file.choose()
-Victims <- read.csv(Victim)
+Victims <- file.choose() #choose victims
+Victims <- read.csv(Victims)
 Shooting_map <- merge(states_map, Victims, by.x="region", by.y = "State")
 Shooting_map <- arrange(Shooting_map,group,order)
 ggplot(data = Shooting_map, aes(x=long, y=lat, group = group, fill = Victims)) + geom_polygon(colour = "black") +  labs(title = "USA Map")
-
+#mapping the highest and lowest victims
+maxmin <- file.choose() #choose highlow
+maxmin <- read.csv(maxmin)
+ggplot(maxmin, mapping = aes(x = State, y = Highest_Victims)) + geom_bar(stat = "identity", width = 1) + theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = -0.01))
+ggplot(maxmin, mapping = aes(x = State, y = Lowest_Victims)) + geom_bar(stat = "identity", width = 1) + theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = -0.01))
 # plot a quantile map
-Death <- file.choose()
-Deathrate <- read.csv(Death)
+Deathrate <- file.choose()
+Deathrate <- read.csv(Deathrate)
 Deathrate <- transform(Deathrate, rate = Fatalities / Victims)
 qa <- quantile(Deathrate$rate,c(0,0.2,0.4,0.6,0.8,1.0))
 Deathrate$rate_q <- cut(Deathrate$rate, qa, labels = c("0-20%","20-40%","40-60%","60-80%","80-100%"),include.lowest = TRUE)
 states <- ddply(states_map, .(region), summarise, lat = mean(lat, na.rm = TRUE), long = mean(long, na.rm = TRUE))
 Deathrate<- merge(Deathrate, states, by.x = "State", by.y = "region")
 ratemap <- ggplot(Deathrate, aes(map_id = State, fill = rate_q)) + geom_map(map = states_map, colour = "black") + scale_fill_brewer(palette = "Set2") + expand_limits(x = states_map$long, y = states_map$lat)+ coord_map("polyconic") + labs(fill = "Death Rate\nPercentile", title = "MassShooting in USA")
+ratemap
 
 #xiazijun
 #Shooting_state <- filter(MassShooting, state %in% c(" texas", " florida"))
