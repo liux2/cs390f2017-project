@@ -28,7 +28,7 @@ Firstly, we filtered the data, we used the filter method to only choose the stat
 
 Then, based on this table, we used the code to do the t-test in order to find the p-value.
 
-![t.test](/pic/ttest.png "t.test")
+![t.test](/pic/ttest.jpg "t.test")
 
 We can see the p-value is equal to 0.9777. Since this p-value is bigger than alpha value: 0.05, we can say this p-value does not reject the Null hypothesis, which means this p-value does not reject that those two states have the same victims. Since this value is also almost equal to 1, so we can say this p-value also     prove that those states almost have the same victims.
 
