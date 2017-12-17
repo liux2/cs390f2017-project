@@ -13,5 +13,5 @@ Here is our content:
 
 - [Proposal](Proposal.md)
 - [Progress Report](ProgressReport.md)
-- [Presentation](http://cdn.rawgit.com/liux2/cs390f2017-presentation/master/cs390_presentation.html)
-- [Final Report]()
+- [Presentation](http://cdn.rawgit.com/liux2/cs390f2017-presentation/master/presentation.html)
+- [Final Report](FinalReport.md)
